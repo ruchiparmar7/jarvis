@@ -138,42 +138,7 @@ def scshot():
         myScreenshot = pyautogui.screenshot()
         myScreenshot.save(r'C:\Users\ruchi\OneDrive\Desktop\screenshot1.png')
         speak("I am done boss, the screenshot is saved in main folder.")
-'''       
-def Covid(s):
-        try:
-            from covid_india import states
-            details = states.getdata()
-            if "check in" in s:
-                s = s.replace("check in","").strip()
-                print(s)
-            elif "check" in s:
-                s = s.replace("check","").strip()
-                print(s)
-            elif "tech" in s:
-                s = s.replace("tech","").strip()
-            s = state[s]
-            ss = details[s]
-            Total = ss["Total"]
-            Active = ss["Active"]
-            Cured = ss["Cured"]
-            Death = ss["Death"]
-            print(f"Boss the total cases in {s} are {Total}, the number of active cases are {Active}, and {Cured} people cured, and {Death} people are death")
-            speak(f"Boss the total cases in {s} are {Total}, the number of active cases are {Active}, and {Cured} people cured, and {Death} people are death")
-            time.sleep(5)
-            speak("Boss do you want any information of other states")
-            I = takeCommand()
-            print(I)
-            if ("check" in I):
-                Covid(I)
-            else:
-                speak("Okay boss stay home stay safe")
-                pass
-        except:
-            speak("Boss some error occured, please try again")
-            speak("Boss which state covid 19 status do you want to check")
-            I = takeCommand()
-            Covid(I)
-        '''
+
 def Instagram_Pro():
         speak("Boss please enter the user name of Instagram: ")
         name = input("Enter username here: ")
@@ -219,25 +184,7 @@ def How():
             except Exception as e:
                 speak("Sorry sir, I am not able to find this")
 
-def tran():
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            r.adjust_for_ambient_noise(source,duration=1)
-            print("Listening...")
-            r.pause_threshold = 1
-            audio = r.listen(source , phrase_time_limit=4)
 
-        try:
-            print("Recognizing...")    
-   # message to be translated
-            message = takeCommand()
-  
-# creating a EngtoHindi() object
-            res = EngtoHindi(message)
-  
-# displaying the translation
-            print(res.convert)
-            speak(f'the translated line is {res.convert}')
     
     
 def speak(audio):
@@ -304,8 +251,8 @@ def sendEmail(to,content):
     server=smtplib.SMTP("smtp.gmail.com",587)
     server.ehlo()
     server.starttls()
-    server.login("ruchiparmar065@gmail.com","ruchi@2001")
-    server.sendmail("parmarvivek084@gmail.com",to,content)
+    server.login("your@gmail.com","yourpassword")
+    server.sendmail("sender@gmail.com",to,content)
     server.close()
 
 def whatsapp():
@@ -320,7 +267,7 @@ def whatsapp():
         hour = int(takeCommand())
         speak("time in minute !")
         minute = int(takeCommand())
-        kit.sendwhatmsg("+917984234520",msg,hour,minute,20)
+        kit.sendwhatmsg("+919876543210",msg,hour,minute,20)
         speak("ok ,sending whatsapp message!")
         
     elif 'papa' in name:
@@ -331,7 +278,7 @@ def whatsapp():
         hour = int(takeCommand())
         speak("time in minute !")
         minute = int(takeCommand())
-        kit.sendwhatmsg("+919825587131",msg,hour,minute,20)
+        kit.sendwhatmsg("+919876543210",msg,hour,minute,20)
         speak("ok ,sending whatsapp message!")
     else:
         speak("tell me the number !")
@@ -344,16 +291,15 @@ def whatsapp():
         hour = int(takeCommand())
         speak("time in minute !")
         minute = int(takeCommand())
-        kit.sendwhatmsg("+917984234520",msg,hour,minute,20)
+        kit.sendwhatmsg("+919876543210",msg,hour,minute,20)
         speak("ok ,sending whatsapp message!") 
 
 def track():
-     ro_number = phonenumbers.parse("+919328061722", None)
+     ro_number = phonenumbers.parse("+919876543210", None)
      print(geocoder.description_for_number(ro_number, "en"))
      print(carrier.name_for_number(ro_number, "en"))
      print(timezone.time_zones_for_number(ro_number))
-    # covid19 = COVID19Py.COVID19(data_source="in")
-     #print(covid19)
+
      
 def temperature():
         IP_Address = get('https://api.ipify.org').text
@@ -478,11 +424,6 @@ if __name__ == "__main__":
             cam.release()
             
             cv2.destroyAllWindows()
-    #elif 'where is' or 'mylocation' in query:
-           # query = query.split(" ")
-            #location = query[2]
-            #speak("Hold on Ruchi, I will show you where " + location + " is.")
-            #os.system("chromium-browser https://www.google.nl/maps/place/" + location + "/&amp;")
             
         elif ('how are you' in query) or('how you being' in query) :
             speak("I am fine")
@@ -500,7 +441,7 @@ if __name__ == "__main__":
             
             
         elif ('send message' in query) or ('whatsapp' in query) or ('send message to vivek' in query):
-            kit.sendwhatmsg("+917984234520", "this is for testing",10,50)
+            kit.sendwhatmsg("+919876543210", "this is for testing",10,50)
             
         elif ('play songs on youtube' in query) or ('fav song on youtube' in query):
             kit.playonyt("kya mujhe pyar hai")
@@ -541,7 +482,7 @@ if __name__ == "__main__":
             try:
                 speak("What should I say?")
                 content = takeCommand().lower()
-                to = "ruchiparmar065@gmail.com"    
+                to = "your@gmail.com"    
                 sendEmail(to, content)
             except Exception as e:
                 print(e)
@@ -708,12 +649,7 @@ if __name__ == "__main__":
             #EG: Jarvis read pdf
         elif ("read pdf" in query) or ("pdf" in query):
                 pdf_reader()
-                '''
-        elif ("covid" in query) or  ("corona" in query):
-                speak("Boss which state covid 19 status do you want to check")
-                s = takeCommand()
-                Covid(s)
-                '''
+
         elif ('system condition' in query) or ('condition of the system' in query):
                 speak("checking the system condition")
                 condition()
@@ -753,35 +689,11 @@ if __name__ == "__main__":
             webbrowser.open('https://www.instagram.com/')
         elif ('twitter' in query) or ('open twitter' in query):
             speak('opening your twitter')
-            webbrowser.open('https://twitter.com/Suj8_116')
+            webbrowser.open('https://twitter.com/')
         elif ('discord' in query) or ('open discord' in query):
             speak('opening your discord')
             webbrowser.open('https://discord.com/channels/@me') 
-            '''
-        elif 'how is the weather' and 'weather' in query:
-
-            url = 'https://api.openweathermap.org/'#Open api link here
-
-            res = requests.get(url)
-
-            data = res.json()
-
-            weather = data['weather'] [0] ['main'] 
-            temp = data['main']['temp']
-            wind_speed = data['wind']['speed']
-
-            latitude = data['coord']['lat']
-            longitude = data['coord']['lon']
-
-            description = data['weather'][0]['description']
-            speak('Temperature : {} degree celcius'.format(temp))
-            print('Wind Speed : {} m/s'.format(wind_speed))
-            print('Latitude : {}'.format(latitude))
-            print('Longitude : {}'.format(longitude))
-            print('Description : {}'.format(description))
-            print('weather is: {} '.format(weather))
-            speak('weather is : {} '.format(weather))
-            '''
+            
         elif 'it\'s my birthday today' in query:
             print(" Wow! Wish you a very Happy Birthday")
             speak(" Wow! Wish you a very Happy Birthday")
@@ -803,22 +715,7 @@ if __name__ == "__main__":
             remember = open('data.txt', 'r')
             speak("you said me to remember that" + remember.read())
             
-            
-       # elif 'dictionary' in query:
-            #speak('What you want to search in your intelligent dictionary?')
-            #translate(takeCommand())
-       # elif 'my news' in query:
-        #    speak('Ofcourse sir..')
-         #   speak_news()
-          #  speak('Do you want to read the full news...')
-           # test = takeCommand()
-            #if 'yes' in test:
-             #   speak('Ok Sir, Opening browser...')
-              #  webbrowser.open(getNewsUrl())
-               # speak('You can now read the full news from this website.')
-            #else:
-             #   speak('No Problem Sir')
-         
+          
         elif ("switch the window" in query) or ("switch window" in query) or ('window' in query):
                 speak("Okay sir, Switching the window")
                 pyautogui.keyDown("alt")
