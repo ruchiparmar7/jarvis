@@ -1,4 +1,4 @@
--illow @ file:///C:/ci/pillow_1603823068645/work  
+-illow @ file:///C:/ci/pillow_1603823068645/work
 -sonschema @ file:///tmp/build/80754af9/jsonschema_1602607155483/work
 absl-py==0.12.0
 alabaster==0.7.12
